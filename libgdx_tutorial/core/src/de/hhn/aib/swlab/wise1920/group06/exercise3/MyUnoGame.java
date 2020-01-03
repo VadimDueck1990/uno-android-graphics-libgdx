@@ -27,12 +27,12 @@ public class MyUnoGame extends ApplicationAdapter {
 		stage = new Stage(new ScreenViewport());
 
 		// dummy numbers to test hand generation
-		int ownNumber = 3;
-		int leftNumber = 4;
-		int topNumber = 5;
+		int ownNumber = 9;
+		int leftNumber = 5;
+		int topNumber = 7;
 		int rightNumber = 5;
 
-		  = new ArrayList<>();
+		ownHand  = new ArrayList<>();
 		leftHand = new ArrayList<>();
 		topHand = new ArrayList<>();
 		rightHand = new ArrayList<>();
@@ -75,11 +75,11 @@ public class MyUnoGame extends ApplicationAdapter {
 		placeLeftCards(Gdx.graphics.getHeight(), foreignCardWidth, foreignCardHeight, CARD_ROTATION, leftHand);
 
 		// same for card
-		Texture wildTexture = new Texture(Gdx.files.internal("Wild_Draw.png"));
+		/*Texture wildTexture = new Texture(Gdx.files.internal("Wild_Draw.png"));
 		Image wildCard = new Image(wildTexture);
 		wildCard.setSize(ownCardWidth, ownCardHeight);
 		wildCard.setPosition(Gdx.graphics.getWidth()/2, ownCardWidth * 4.0f);
-		stage.addActor(wildCard);
+		stage.addActor(wildCard);*/
 //
 //		// same for card
 //		Texture numberTexture = new Texture(Gdx.files.internal("Red_2.png"));
@@ -172,12 +172,12 @@ public class MyUnoGame extends ApplicationAdapter {
 	public void placeLeftCards(float screenHeight, float cardWidth, float cardHeight, float rot, List<Image> hand) {
 		// define the constants
 		final float rotation = rot + 270.0f;   // rotation in degrees
-		final float rotationOffset = MathUtils.sinDeg(rotation) * cardHeight;     // offset to show the edge of the card on the left
+		final float rotationOffset = MathUtils.sinDeg(rotation-270.0f) * cardHeight;     // offset to show the edge of the card on the left
 		float offset = -2.0f/3.0f * cardWidth;
 		if(hand.size() > 8) {
-			offset = (screenHeight - cardWidth *6.0f) / ((float)hand.size() - 1.0f);
+			offset = (screenHeight - cardWidth *2.0f) / ((float)hand.size() - 1.0f);
 		}
-		final float offsetGlobal = (((float)hand.size() * offset + offset) / 2.0f) - rotationOffset;
+		final float offsetGlobal = (((float)hand.size() * offset + offset) / 2.0f) + rotationOffset - cardWidth;
 		float yPosCard;
 
 		Gdx.app.log("Handwidth: ", String.valueOf(screenHeight));

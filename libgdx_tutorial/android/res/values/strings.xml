@@ -1,6 +1,28 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="app_name">UNO</string>
+    <string name="editTextHintUsername">Benutzername</string>
+    <string name="editTextHintPassword">Passwort</string>
+    <string name="loginButtonName">Anmelden</string>
+    <string name="registerButtonName">Registrieren</string>
+    <string name="lobbyMyPlayerButtonNotReady">Spielen!</string>
+    <string name="lobbyMyPlayerButtonReady">Abbrechen</string>
+    <string name="lobbyMyPlayerStatusReady">Bereit!</string>
+    <string name="lobbyMyPlayerStatusNotReady">Noch nicht bereit!</string>
+    <string name="lobbyNoPlayer">-</string>
+    <string name="register_successful">Registrierung erfolgreich</string>
+    <string name="nickname_exists">Benutzername existiert. Bitte neuen ausdenken</string>
+    <string name="unexpected_error">Es ist ein unerwarteter Fehler ausgetreten</string>
+    <string name="no_internet_connection">Es konnte keine Verbindung hergestellt werden. Checken sie ihre Internetverbindung</string>
+    <string name="missing_data">Bitte Username und Passwort eingeben!</string>
+    <string name="missing_confirm_password">Bitte Passwort bestätigen!</string>
+    <string name="login_successful">Login erfolgreich</string>
+    <string name="serverFull">Die maximale Anzahl der Spieler wurde erreicht! Versuche es später noch einmal :)</string>
+    <string name="gameIsRunning">Das Spiel läuft bereits! Versuche es später noch einmal :)</string>
+    <string name="playerExist">Ein Spieler mit diesen Logindaten ist bereits im angemeldet!</string>
+    <string name="wrong_input">Login fehlgeschlagen. Falsches Passwort oder falscher Benutzername eingegeben</string>
+    <string name="failed_authorization">Autorisation fehlgeschlagen</string>
+    <string name="notYourTurn">Du bist noch nicht an der Reihe :)</string>
+    <string name="invalidCard">Du kannst diese Karte nicht legen</string>
 
-    <string name="app_name">uno</string>
 
 </resources>

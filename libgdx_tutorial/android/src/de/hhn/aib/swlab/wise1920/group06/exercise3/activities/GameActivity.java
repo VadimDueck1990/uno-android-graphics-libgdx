@@ -32,9 +32,9 @@ import de.hhn.aib.swlab.wise1920.group06.exercise3.ExampleItem;
 import de.hhn.aib.swlab.wise1920.group06.exercise3.R;
 import de.hhn.aib.swlab.wise1920.group06.exercise3.helper.PreferenceHelper;
 import de.hhn.aib.swlab.wise1920.group06.exercise3.interfaces.MessageListener;
-import de.hhn.aib.swlab.wise1920.group06.exercise3.models.Card;
-import de.hhn.aib.swlab.wise1920.group06.exercise3.models.GameMessage;
-import de.hhn.aib.swlab.wise1920.group06.exercise3.models.PlayerImpl;
+import de.hhn.aib.swlab.wise1920.group06.core.models.Card;
+import de.hhn.aib.swlab.wise1920.group06.core.models.GameMessage;
+import de.hhn.aib.swlab.wise1920.group06.core.models.PlayerImpl;
 import de.hhn.aib.swlab.wise1920.group06.exercise3.services.WebSocketService;
 
 public class GameActivity extends AppCompatActivity implements MessageListener {
@@ -543,7 +543,6 @@ public class GameActivity extends AppCompatActivity implements MessageListener {
 
     //Sets card to my Hand
     private void setMyHand(final GameMessage gameMessage) {
-
         runOnUiThread(new Runnable() {
 
             @Override

@@ -21,11 +21,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
+import de.hhn.aib.swlab.wise1920.group06.core.models.Card;
 import de.hhn.aib.swlab.wise1920.group06.exercise3.activities.LobbyActivity;
 import de.hhn.aib.swlab.wise1920.group06.exercise3.helper.PreferenceHelper;
 import de.hhn.aib.swlab.wise1920.group06.exercise3.interfaces.MessageListener;
-import de.hhn.aib.swlab.wise1920.group06.exercise3.models.GameMessage;
-import de.hhn.aib.swlab.wise1920.group06.exercise3.models.PlayerImpl;
+import de.hhn.aib.swlab.wise1920.group06.core.models.GameMessage;
+import de.hhn.aib.swlab.wise1920.group06.core.models.PlayerImpl;
 import de.hhn.aib.swlab.wise1920.group06.exercise3.services.WebSocketService;
 import de.hhn.aib.swlab.wise1920.group06.core.MyUnoGame;
 import de.hhn.aib.swlab.wise1920.group06.core.interfaces.UiCommunication;
@@ -206,8 +207,8 @@ public class AndroidLauncher extends AndroidApplication implements MessageListen
         }
 
         setOtherPlayerCardCount();
-        setActiveAndNextPlayer(gameMessage);
-        // setMyHand(gameMessage);
+        //setActiveAndNextPlayer(gameMessage);
+        setMyHand(gameMessage);
         // showLastDiscardedCard(gameMessage);
 
     }
@@ -387,6 +388,26 @@ public class AndroidLauncher extends AndroidApplication implements MessageListen
         }
     };
 
+    //Sets card to my Hand
+    private void setMyHand(final GameMessage gameMessage) {
+
+        //unoGame.placeOwnCards(gameMessage.getHand());
+        /*runOnUiThread(new Runnable() {
+
+            @Override
+            public void run() {
+
+                cardList.clear();
+
+                for (Card card : gameMessage.getHand()) {
+                    cardList.add(new ExampleItem(card));
+                }
+                mAdapter.notifyDataSetChanged();
+
+            }
+        });*/
+    }
+
     @Override
     public void initializeSetup() {
         // register with socket service
@@ -394,9 +415,9 @@ public class AndroidLauncher extends AndroidApplication implements MessageListen
         Intent serviceIntent = new Intent(this, WebSocketService.class);
         bindService(serviceIntent, connection, Context.BIND_AUTO_CREATE);
 
-        /*unoGame.setName(new Color(1.0f, 0.78f, 0.14f, 1), "Vadim", 0);
-        unoGame.setName(new Color(1.0f, 0.78f, 0.14f, 1), "Andriy", 1);
-        unoGame.setName(new Color(1.0f, 0.78f, 0.14f, 1), "Benjamin", 2);
-        unoGame.setName(new Color(1.0f, 0.78f, 0.14f, 1), "Simon", 3);*/
+        //unoGame.setName(new Color(1.0f, 0.78f, 0.14f, 1), "Vadim", 0);
+        //unoGame.setName(new Color(1.0f, 0.78f, 0.14f, 1), "Andriy", 1);
+        //unoGame.setName(new Color(1.0f, 0.78f, 0.14f, 1), "Benjamin", 2);
+        //unoGame.setName(new Color(1.0f, 0.78f, 0.14f, 1), "Simon", 3);
     }
 }

@@ -1,6 +1,6 @@
 package de.hhn.aib.swlab.wise1920.group06.exercise3.serverCommunication;
 
-import de.hhn.aib.swlab.wise1920.group06.exercise3.models.User;
+import de.hhn.aib.swlab.wise1920.group06.core.models.User;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.POST;

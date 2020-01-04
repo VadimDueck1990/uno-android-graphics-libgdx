@@ -18,7 +18,7 @@ import java.net.HttpURLConnection;
 
 import de.hhn.aib.swlab.wise1920.group06.exercise3.R;
 import de.hhn.aib.swlab.wise1920.group06.exercise3.helper.PreferenceHelper;
-import de.hhn.aib.swlab.wise1920.group06.exercise3.models.User;
+import de.hhn.aib.swlab.wise1920.group06.core.models.User;
 import de.hhn.aib.swlab.wise1920.group06.exercise3.serverCommunication.RetrofitAPI;
 import retrofit2.Call;
 import retrofit2.Callback;

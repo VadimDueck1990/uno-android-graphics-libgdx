@@ -23,8 +23,8 @@ import de.hhn.aib.swlab.wise1920.group06.exercise3.AndroidLauncher;
 import de.hhn.aib.swlab.wise1920.group06.exercise3.R;
 import de.hhn.aib.swlab.wise1920.group06.exercise3.helper.PreferenceHelper;
 import de.hhn.aib.swlab.wise1920.group06.exercise3.interfaces.MessageListener;
-import de.hhn.aib.swlab.wise1920.group06.exercise3.models.LobbyMessage;
-import de.hhn.aib.swlab.wise1920.group06.exercise3.models.PlayerImpl;
+import de.hhn.aib.swlab.wise1920.group06.core.models.LobbyMessage;
+import de.hhn.aib.swlab.wise1920.group06.core.models.PlayerImpl;
 import de.hhn.aib.swlab.wise1920.group06.exercise3.services.WebSocketService;
 
 public class LobbyActivity extends AppCompatActivity implements MessageListener {

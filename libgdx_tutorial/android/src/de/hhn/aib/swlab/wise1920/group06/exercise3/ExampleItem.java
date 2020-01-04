@@ -1,6 +1,6 @@
 package de.hhn.aib.swlab.wise1920.group06.exercise3;
 
-import de.hhn.aib.swlab.wise1920.group06.exercise3.models.Card;
+import de.hhn.aib.swlab.wise1920.group06.core.models.Card;
 
 public class ExampleItem {
 

@@ -1,4 +1,4 @@
-package de.hhn.aib.swlab.wise1920.group06.exercise3.models;
+package de.hhn.aib.swlab.wise1920.group06.core.models;
 
 public class Card {
 
@@ -56,7 +56,7 @@ public class Card {
     public String getCardResource(){
         String output = "";
 
-        output += this.color.toString().toLowerCase() + this.value.toString().toLowerCase();
+        output += this.color.toString().toLowerCase() + this.value.toString().toLowerCase() + ".png";
 
         return output;
         //String path = "sdcard/camera_app/name.jpg"; img.setImageDrawable(Drawable.createFromPath(path));

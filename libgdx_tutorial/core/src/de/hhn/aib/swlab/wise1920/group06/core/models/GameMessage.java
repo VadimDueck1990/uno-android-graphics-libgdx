@@ -1,4 +1,4 @@
-package de.hhn.aib.swlab.wise1920.group06.exercise3.models;
+package de.hhn.aib.swlab.wise1920.group06.core.models;
 
 
 import java.util.List;

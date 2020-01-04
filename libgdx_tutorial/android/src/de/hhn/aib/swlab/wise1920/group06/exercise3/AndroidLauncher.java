@@ -27,8 +27,10 @@ import de.hhn.aib.swlab.wise1920.group06.exercise3.interfaces.MessageListener;
 import de.hhn.aib.swlab.wise1920.group06.exercise3.models.GameMessage;
 import de.hhn.aib.swlab.wise1920.group06.exercise3.models.PlayerImpl;
 import de.hhn.aib.swlab.wise1920.group06.exercise3.services.WebSocketService;
+import de.hhn.aib.swlab.wise1920.group06.core.MyUnoGame;
+import de.hhn.aib.swlab.wise1920.group06.core.interfaces.UiCommunication;
 
-public class AndroidLauncher extends AndroidApplication implements MessageListener {
+public class AndroidLauncher extends AndroidApplication implements MessageListener, UiCommunication{
 
     static final Color ACTIVE = new Color(1.0f, 0.78f, 0.14f, 1);
     static final Color NEXT = new Color(1.0f, 0.78f, 0.14f, 0.25f);
@@ -49,26 +51,17 @@ public class AndroidLauncher extends AndroidApplication implements MessageListen
     protected void onCreate (Bundle savedInstanceState) {
         // initialize variables
         super.onCreate(savedInstanceState);
-        /*
+
         this.allPlayerList = new ArrayList<>();
         this.playerToLabelIndex = new ConcurrentHashMap<>();
         this.gson = new Gson();
 
-        // register with socket service
-        Intent serviceIntent = new Intent(this, WebSocketService.class);
-        bindService(serviceIntent, connection, Context.BIND_AUTO_CREATE);
-        preferenceHelper = new PreferenceHelper(AndroidLauncher.this);*/
-
+        preferenceHelper = new PreferenceHelper(AndroidLauncher.this);
         // intialize UI
-        unoGame = new MyUnoGame();
+        unoGame = new MyUnoGame(this);
 
         AndroidApplicationConfiguration config = new AndroidApplicationConfiguration();
         this.initialize(unoGame, config);
-
-        unoGame.setName(new Color(1.0f, 0.78f, 0.14f, 1), "Vadim", 0);
-        unoGame.setName(new Color(1.0f, 0.78f, 0.14f, 1), "Andriy", 1);
-        unoGame.setName(new Color(1.0f, 0.78f, 0.14f, 1), "Benjamin", 2);
-        unoGame.setName(new Color(1.0f, 0.78f, 0.14f, 1), "Simon", 3);
     }
 
     @Override
@@ -233,8 +226,8 @@ public class AndroidLauncher extends AndroidApplication implements MessageListen
                 Log.i("SET_OTHER_PLAYERS_CASE1", " " + String.valueOf(otherPlayersCount));
                 switch (myPlayerIndex) {
                     case 1:
-                        unoGame.setName(ACTIVE, player1.getUserName(), 0); // set the label
-                        unoGame.setName(ACTIVE, player2.getUserName(), 2);
+                        unoGame.setName(new Color(1.0f, 0.78f, 0.14f, 1), player1.getUserName(), 0); // set the label
+                        unoGame.setName(new Color(1.0f, 0.78f, 0.14f, 1), player2.getUserName(), 2);
 
                         playerToLabelIndex.put(player1.getPlayerIndex(), 0); // save label and index
                         playerToLabelIndex.put(player2.getPlayerIndex(), 2);
@@ -243,8 +236,8 @@ public class AndroidLauncher extends AndroidApplication implements MessageListen
                         break;
 
                     case 2:
-                        unoGame.setName(ACTIVE, player2.getUserName(), 0);
-                        unoGame.setName(ACTIVE, player1.getUserName(), 2);
+                        unoGame.setName(new Color(1.0f, 0.78f, 0.14f, 1), player2.getUserName(), 0);
+                        unoGame.setName(new Color(1.0f, 0.78f, 0.14f, 1), player1.getUserName(), 2);
 
                         playerToLabelIndex.put(player2.getPlayerIndex(), 0);
                         playerToLabelIndex.put(player1.getPlayerIndex(), 2);
@@ -393,4 +386,17 @@ public class AndroidLauncher extends AndroidApplication implements MessageListen
             serviceBound = false;
         }
     };
+
+    @Override
+    public void initializeSetup() {
+        // register with socket service
+
+        Intent serviceIntent = new Intent(this, WebSocketService.class);
+        bindService(serviceIntent, connection, Context.BIND_AUTO_CREATE);
+
+        /*unoGame.setName(new Color(1.0f, 0.78f, 0.14f, 1), "Vadim", 0);
+        unoGame.setName(new Color(1.0f, 0.78f, 0.14f, 1), "Andriy", 1);
+        unoGame.setName(new Color(1.0f, 0.78f, 0.14f, 1), "Benjamin", 2);
+        unoGame.setName(new Color(1.0f, 0.78f, 0.14f, 1), "Simon", 3);*/
+    }
 }

@@ -31,11 +31,11 @@ import de.hhn.aib.swlab.wise1920.group06.exercise3.services.WebSocketService;
 import de.hhn.aib.swlab.wise1920.group06.core.MyUnoGame;
 import de.hhn.aib.swlab.wise1920.group06.core.interfaces.UiCommunication;
 
-public class AndroidLauncher extends AndroidApplication implements MessageListener, UiCommunication{
+import static de.hhn.aib.swlab.wise1920.group06.core.MyUnoGame.PlayerStatus.ACTIVE;
+import static de.hhn.aib.swlab.wise1920.group06.core.MyUnoGame.PlayerStatus.INACTIVE;
+import static de.hhn.aib.swlab.wise1920.group06.core.MyUnoGame.PlayerStatus.NEXT;
 
-    static final Color ACTIVE = new Color(1.0f, 0.78f, 0.14f, 1);
-    static final Color NEXT = new Color(1.0f, 0.78f, 0.14f, 0.25f);
-    static final Color INACTIVE = new Color(1.0f, 0.78f, 0.14f, 0.05f);
+public class AndroidLauncher extends AndroidApplication implements MessageListener, UiCommunication{
 
     private PlayerImpl player1, player2, player3, player4;
     private List<PlayerImpl> allPlayerList;
@@ -207,7 +207,7 @@ public class AndroidLauncher extends AndroidApplication implements MessageListen
         }
 
         setOtherPlayerCardCount();
-        //setActiveAndNextPlayer(gameMessage);
+        setActiveAndNextPlayer(gameMessage);
         setMyHand(gameMessage);
         // showLastDiscardedCard(gameMessage);
 
@@ -227,8 +227,8 @@ public class AndroidLauncher extends AndroidApplication implements MessageListen
                 Log.i("SET_OTHER_PLAYERS_CASE1", " " + String.valueOf(otherPlayersCount));
                 switch (myPlayerIndex) {
                     case 1:
-                        unoGame.setName(new Color(1.0f, 0.78f, 0.14f, 1), player1.getUserName(), 0); // set the label
-                        unoGame.setName(new Color(1.0f, 0.78f, 0.14f, 1), player2.getUserName(), 2);
+                        unoGame.setName(ACTIVE, player1.getUserName(), 0); // set the label
+                        unoGame.setName(ACTIVE, player2.getUserName(), 2);
 
                         playerToLabelIndex.put(player1.getPlayerIndex(), 0); // save label and index
                         playerToLabelIndex.put(player2.getPlayerIndex(), 2);
@@ -237,8 +237,8 @@ public class AndroidLauncher extends AndroidApplication implements MessageListen
                         break;
 
                     case 2:
-                        unoGame.setName(new Color(1.0f, 0.78f, 0.14f, 1), player2.getUserName(), 0);
-                        unoGame.setName(new Color(1.0f, 0.78f, 0.14f, 1), player1.getUserName(), 2);
+                        unoGame.setName(ACTIVE, player2.getUserName(), 0);
+                        unoGame.setName(ACTIVE, player1.getUserName(), 2);
 
                         playerToLabelIndex.put(player2.getPlayerIndex(), 0);
                         playerToLabelIndex.put(player1.getPlayerIndex(), 2);
@@ -390,22 +390,7 @@ public class AndroidLauncher extends AndroidApplication implements MessageListen
 
     //Sets card to my Hand
     private void setMyHand(final GameMessage gameMessage) {
-
-        //unoGame.placeOwnCards(gameMessage.getHand());
-        /*runOnUiThread(new Runnable() {
-
-            @Override
-            public void run() {
-
-                cardList.clear();
-
-                for (Card card : gameMessage.getHand()) {
-                    cardList.add(new ExampleItem(card));
-                }
-                mAdapter.notifyDataSetChanged();
-
-            }
-        });*/
+        unoGame.placeOwnCards(gameMessage.getHand());
     }
 
     @Override
